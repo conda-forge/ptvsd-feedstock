@@ -1,5 +1,5 @@
 {% set name = "ptvsd" %}
-{% set version = "4.2.10" %}
+{% set version = "4.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip
-  sha256: 5312d970d8579338a528b79ee8409e11100b585a99b41c5c61f267cbe0912246
+  sha256: 94608e5a3240dba67357a6bef5696f7409335707648297ea08ca623acac0f53a
 
 build:
   number: 0
