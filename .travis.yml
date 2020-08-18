@@ -3,28 +3,26 @@
 
 language: generic
 
-env:
-  global:
-    # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
-    - secure: "v6cOh2kPREXgB3zdIL+q0KoEOITXGEDQRyOs7slXC23j9E3FfOrgpLf0l/VhQ1rBWTYkByIzKe8QzTBhKBYxQUhbvo83llzTqf8s1Un1KgaACV4UTY9V6DR++5t00k89v1s16BfReWPmqpvhbFOmfc6Hgcu56sXtf/iiT0lS1/+8ILQWknEu8w6ZHG4fhgt7KzXuXJKad5QUV6ADv+zFhcJqaGZJupcnpZEg+JahAm33u8tDjaW1DKuVrglPzfQvoyKOqHhIhN967aW43/ycCY6VclEmIKtSjzo7mruEQL3QJbTwOE08th1+mAKRFL1VmKMalskzDb23onqBsjVvv+RluIig6yQZPVIWPtzeKJySVQuCi7aNd5ghqwWo1bnQRAbot913PR+fz8smeb1txhNth5dBkt2Fg39VRYA5LwL2SuzqLNibDe7jAhj5w7kdET3jCgeLo2lIqm+94ER+NJaqwhmjBlg+QS30NCjWZhSVyz57ZS/8zp/Tr0qC0ipl9aGfCMgRsBHbP5LY1inlMjPOeApzMyO8r7j6zMugZyq1bQv/e0VTrao9YN5OobiyO/cBZ12G1XpV8UZk+D9hj3Tc0zL6fn258rJzWgT/Q0twyb40GZLiABmMo9p7ifleYf/lrd2SwRRFQjcdncwF1RMAEy1OonC3AElrqFcPw90="
+
 
 matrix:
   include:
-    - env: CONFIG=linux_ppc64le_python3.6 UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
+    - env: CONFIG=linux_ppc64le_python3.6.____cpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
 
-    - env: CONFIG=linux_ppc64le_python3.7 UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
+    - env: CONFIG=linux_ppc64le_python3.7.____cpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
 
-    - env: CONFIG=linux_ppc64le_python3.8 UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
+    - env: CONFIG=linux_ppc64le_python3.8.____cpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
 
 script:
   - export CI=travis
   - export GIT_BRANCH="$TRAVIS_BRANCH"
+  - export FEEDSTOCK_NAME=$(basename ${TRAVIS_REPO_SLUG})
 
 
   - if [[ ${PLATFORM} =~ .*linux.* ]]; then ./.scripts/run_docker_build.sh; fi
