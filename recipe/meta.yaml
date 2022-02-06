@@ -12,7 +12,7 @@ source:
 build:
   number: 4
   skip: True  # [win and py==38]
-  skip_compile_pyc: true  # [win]
+  skip_compile_pyc: "*"  # [win]
   binary_relocation: False  # [osx]
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
