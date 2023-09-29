@@ -23,6 +23,7 @@ requirements:
     - python
     - pip
     - pytest-runner
+    - cython
     - setuptools
   run:
     - python
