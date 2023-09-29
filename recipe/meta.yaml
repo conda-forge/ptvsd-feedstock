@@ -14,7 +14,10 @@ build:
   skip: True  # [win and py==38]
   skip_compile_pyc: "*"  # [win]
   binary_relocation: False  # [osx]
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  script:
+    - cythonize ./src/ptvsd/_vendored/pydevd/_pydevd_bundle/pydevd_cython.pyx
+    - cythonize ./src/ptvsd/_vendored/pydevd/_pydevd_frame_eval/pydevd_frame_evaluator.pyx
+    - "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   build:
@@ -23,7 +26,7 @@ requirements:
     - python
     - pip
     - pytest-runner
-    - cython
+    - cython <3
     - setuptools
   run:
     - python
